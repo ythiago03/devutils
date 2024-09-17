@@ -84,7 +84,7 @@ Certifique-se de ter o Node.js e o npm instalados em seu ambiente. Caso não ten
 
 Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/devutils.git
+git clone https://github.com/ythiago03/devutils.git
 ```
 Acesse o diretório do projeto:
 ```bash
