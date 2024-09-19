@@ -1,19 +1,25 @@
-import './Home.scss';
+import { NavLink, Outlet } from 'react-router-dom';
+import './Layout.scss';
 
-const Home = () => {
+const Layout = () => {
   return (
     <section className="home_container">
       <nav className="sidebar_container">
         <ul>
           <h4>Generators</h4>
-          <li>
-            <span className="material-symbols-outlined">user_attributes</span>
-            Person
-          </li>
-          <li>
-            <span className="material-symbols-outlined">id_card</span>
-            Cpf
-          </li>
+            <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : '')}>
+              <li>
+                <span className="material-symbols-outlined">user_attributes</span>
+                Person
+              </li>
+            </NavLink>
+          
+            <NavLink to='cpf' className={({ isActive }) => (isActive ? 'active' : '')}>
+              <li>
+                <span className="material-symbols-outlined">id_card</span>
+                Cpf
+              </li>
+            </NavLink>
         </ul>
         <span className='divider'></span>
         <ul>
@@ -40,10 +46,10 @@ const Home = () => {
         </ul>
       </nav>
       <main className="main_container">
-        <span>Tema teste</span>
+        <Outlet/>
       </main>
     </section>
   )
 }
 
-export default Home
+export default Layout

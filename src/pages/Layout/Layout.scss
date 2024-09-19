@@ -29,6 +29,25 @@
         &:hover{
           background-color: rgba(128, 128, 128, 0.233);
           border-radius: 5px;
+        }     
+      }
+
+      .active{
+        display: flex;
+
+        &::before{
+          display: block;
+          content: '';
+          height: 30px;
+          border-radius: 10px;
+          width: 5px;
+          background-color: white;
+        }
+        
+        li{
+          flex: 1;
+          background-color: rgba(128, 128, 128, 0.233);
+          border-radius: 5px;
         }
       }
     }
@@ -43,7 +62,18 @@
   }
 
   .main_container{
-    background-color: blue;
     flex: 1;
+  }
+}
+
+.light{
+  .home_container{
+    .sidebar_container{
+      .active{
+        &::before{
+          background-color: black;
+        }
+      }
+    }
   }
 }
