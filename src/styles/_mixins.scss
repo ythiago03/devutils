@@ -1,0 +1,30 @@
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-align($justify: flex-start, $align: flex-start){
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin font($size, $weight: normal, $align: left) {
+  font-size: $size;
+  font-weight: $weight;
+  text-align: $align;
+}
+
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
