@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { Toaster } from "@/components/ui/toaster"
 import './Layout.scss';
 
 const Layout = () => {
@@ -45,8 +46,10 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
+      
       <main className="main_container">
         <Outlet/>
+        <Toaster />
       </main>
     </section>
   )

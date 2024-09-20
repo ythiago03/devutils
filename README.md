@@ -19,11 +19,14 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias e frameworks:
 - **Vite**: Ferramenta de build rápida para projetos React, utilizada para desenvolvimento e empacotamento.
 - **Jest**: Framework de testes unitários para garantir a funcionalidade e a qualidade do código.
 - **ShadCN**: Design system e biblioteca de componentes para React que segue os princípios de acessibilidade e usabilidade.
+- **Faker**: Biblioteca para gerar dados falsos (mas realistas) para testes e desenvolvimento.
 
 ### 1.3 Inspirações
 Este projeto foi inspirado em sites que fornecem ferramentas semelhantes:
 - [Text Mateus F](https://text.mateusf.com)
 - [4Devs](https://www.4devs.com.br)
+- [RandomUser](https://randomuser.me/)
+- [PublicAPIs](https://publicapis.dev/)
 
 ## 2. Funcionalidades Principais
 
