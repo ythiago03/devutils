@@ -45,6 +45,7 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
+      
       <main className="main_container">
         <Outlet/>
       </main>
