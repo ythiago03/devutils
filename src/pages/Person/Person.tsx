@@ -59,7 +59,7 @@ const Person = () => {
         <div className='input_container'>
           Name:
           <div>
-            <Input disabled type="text" value={person.name} />
+            <Input data-testid="person-name" disabled type="text" value={person.name} />
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
