@@ -1,0 +1,12 @@
+@import 'src/styles/main.scss';
+
+.navbar_container{
+  width: 100%;
+  @include flex-align(space-between, center);
+  padding: 1.5rem;
+
+  h1{
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
