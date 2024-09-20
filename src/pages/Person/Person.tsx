@@ -2,69 +2,309 @@ import { useEffect, useState } from 'react';
 import { faker } from '@faker-js/faker';
 import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/hooks/use-toast"
 import './Person.scss';
 
 const Person = () => {
   const [person, setPerson] = useState({
     name: '',
     email: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    gender: '',
+    birthdate: new Date(),
+    address: {
+      street: '',
+      number: '',
+      zipcode: '',
+      country: '',
+      city: '',
+      state: ''
+    }
   });
+
+  const { toast } = useToast()
 
   const generateFullPerson = () => {
     const person = {
       name: faker.person.fullName(),
       email: faker.internet.email(),
-      phoneNumber: faker.phone.number({ style: 'national' })
+      phoneNumber: faker.phone.number({ style: 'national' }),
+      gender: faker.person.gender(),
+      birthdate: faker.date.birthdate(),
+      address: {
+        street: faker.location.street(),
+        number: faker.location.buildingNumber(),
+        zipcode: faker.location.zipCode(),
+        country: faker.location.country(),
+        city: faker.location.city(),
+        state: faker.location.state()
+      },
     }
     setPerson(person)
   }
-
 
   useEffect(() => {
     generateFullPerson()
   }, [])
   return (
-    <>
-      <Button onClick={generateFullPerson}>Generate new person</Button>
-      <Button onClick={() => {navigator.clipboard.writeText(JSON.stringify(person))}}>Copy JSON</Button>
+    <div className='person_container'>
       <section className='person-data_container'>
+        <h2>Personal Info</h2>
         <div className='input_container'>
           Name:
           <div>
             <Input disabled type="text" value={person.name} />
-            <span 
-              onClick={() => {navigator.clipboard.writeText(person.name)}} className="material-symbols-outlined"
-            >
-              content_paste
-            </span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                <span 
+                  onClick={() => {navigator.clipboard.writeText(person.name)}} className="material-symbols-outlined"
+                >
+                  content_paste
+                </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copy to clipboard</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
         <div className='input_container'>
           Email Address:
           <div>
             <Input disabled type="email" value={person.email} />
-            <span 
-              onClick={() => {navigator.clipboard.writeText(person.email)}} className="material-symbols-outlined"
-            >
-              content_paste
-            </span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span 
+                    onClick={() => {navigator.clipboard.writeText(person.email)}} className="material-symbols-outlined"
+                  >
+                    content_paste
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copy to clipboard</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
         <div className='input_container'>
           Phone number:
           <div>
             <Input disabled type="text" value={person.phoneNumber} />
-            <span 
-              onClick={() => {navigator.clipboard.writeText(person.phoneNumber)}} className="material-symbols-outlined"
-            >
-              content_paste
-            </span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span 
+                    onClick={() => {navigator.clipboard.writeText(person.phoneNumber)}} className="material-symbols-outlined"
+                  >
+                    content_paste
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copy to clipboard</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+        </div>
+        <div className='input_wrapper'>
+          <div className='input_container'>
+            Birthdate:
+            <div>
+              <Input disabled type="text" value={person.birthdate.toLocaleDateString()} />
+              <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span 
+                    onClick={() => {navigator.clipboard.writeText(person.birthdate.toLocaleDateString())}} className="material-symbols-outlined"
+                  >
+                    content_paste
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copy to clipboard</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            </div>
+          </div>
+          <div className='input_container'>
+            Phone number:
+            <div>
+              <Input disabled type="text" value={person.phoneNumber} />
+              <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span 
+                    onClick={() => {navigator.clipboard.writeText(person.phoneNumber)}} className="material-symbols-outlined"
+                  >
+                    content_paste
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copy to clipboard</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            </div>
+          </div>
+        </div>
+
+        <span className='divider'></span>
+
+        <h2>Address</h2>
+        <div className='input_wrapper'>
+          <div className='input_container'>
+            Street:
+            <div>
+              <Input disabled type="text" value={person.address.street} />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span 
+                      onClick={() => {navigator.clipboard.writeText(person.address.street)}} className="material-symbols-outlined"
+                    >
+                      content_paste
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy to clipboard</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          </div>
+          <div className='input_container'>
+            Number:
+            <div>
+              <Input disabled type="text" value={person.address.number} />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span 
+                      onClick={() => {navigator.clipboard.writeText(person.address.number)}} className="material-symbols-outlined"
+                    >
+                      content_paste
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy to clipboard</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          </div>
+        </div>
+        <div className='input_wrapper'>
+          <div className='input_container'>
+            City:
+            <div>
+              <Input disabled type="text" value={person.address.city} />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span 
+                      onClick={() => {navigator.clipboard.writeText(person.address.city)}} className="material-symbols-outlined"
+                    >
+                      content_paste
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy to clipboard</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          </div>
+          <div className='input_container'>
+            Zipcode:
+            <div>
+              <Input disabled type="text" value={person.address.zipcode} />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span 
+                      onClick={() => {navigator.clipboard.writeText(person.address.zipcode)}} className="material-symbols-outlined"
+                    >
+                      content_paste
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy to clipboard</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          </div>
+        </div>
+        <div className='input_wrapper'>
+          <div className='input_container'>
+            State:
+            <div>
+              <Input disabled type="text" value={person.address.state} />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span 
+                      onClick={() => {navigator.clipboard.writeText(person.address.state)}} className="material-symbols-outlined"
+                    >
+                      content_paste
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy to clipboard</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          </div>
+          <div className='input_container'>
+            Country:
+            <div>
+              <Input disabled type="text" value={person.address.country} />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span 
+                      onClick={() => {navigator.clipboard.writeText(person.address.country)}} className="material-symbols-outlined"
+                    >
+                      content_paste
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy to clipboard</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
         </div>
       </section>
-      
-    </>
+      <div className='btn_wrapper'>
+        <Button onClick={generateFullPerson}>Generate new person</Button>
+        <Button 
+          onClick={() => {
+            navigator.clipboard.writeText(JSON.stringify(person))
+            toast({
+              title: "Text copied to clipboard",
+            })
+          }}
+        >
+          Copy JSON
+        </Button>
+        
+      </div>
+    </div>
   )
 }
 
