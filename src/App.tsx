@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Person from "./pages/Person/Person";
 import Cpf from "./pages/Cpf/Cpf";
+import PublicApis from "./pages/Public-Apis/PublicApis";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Layout />} >
             <Route index element={<Person/>}/>
             <Route path="cpf" element={<Cpf/>}/>
+            <Route path="public-apis" element={<PublicApis/>}/>
           </Route>
         </Routes>
       </Router>  

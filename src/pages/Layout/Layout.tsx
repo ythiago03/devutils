@@ -32,10 +32,12 @@ const Layout = () => {
         </ul>
         <ul>
           <h4>Others</h4>
-          <li>
-            <span className="material-symbols-outlined">integration_instructions</span>
-            Public APIs
-          </li>
+          <NavLink to='public-apis' className={({ isActive }) => (isActive ? 'active' : '')}>
+            <li>
+              <span className="material-symbols-outlined">integration_instructions</span>
+              Public APIs
+            </li>
+          </NavLink>
           <li>
             <span className="material-symbols-outlined">mood</span>
             Icons
