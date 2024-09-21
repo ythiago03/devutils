@@ -1,12 +1,6 @@
 .cards_container{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); // Define a largura mínima
-  gap: 20px; // Espaçamento entre os cards
-
-  .card_footer{
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    padding: 0rem 1rem 1rem 1rem;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 1.5rem;
 }
