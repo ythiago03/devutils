@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { getCards } from '@/services/apiCards';
 
 interface CardInterface {
+  id: number,
   title: string,
   coverUrl: string,
   description: string
@@ -51,7 +52,7 @@ const PublicApis = () => {
   return (
     <section>
       <div className="cards_container">
-        {cards.map((card: CardInterface) => <Card card={card}/>)}
+        {cards.map((card: CardInterface) => <Card key={card.id} card={card}/>)}
       </div>
       
     </section>

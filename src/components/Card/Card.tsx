@@ -11,6 +11,7 @@ import './Card.scss';
 
 interface CardInterface {
   card:{
+    id: number,
     title: string,
     coverUrl: string,
     description: string
@@ -29,7 +30,7 @@ const Card: React.FC<CardInterface> = ({card}) => {
         <CardDescription>{card.description}</CardDescription>
       </CardContent>
       <CardFooter className="card_footer">
-        {card.badges.map(badge => <Badge>{badge}</Badge>)}
+        {card.badges.map(badge => <Badge key={badge+card.id}>{badge}</Badge>)}
       </CardFooter>
     </CardShadcn>
   )
