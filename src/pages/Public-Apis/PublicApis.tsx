@@ -1,5 +1,8 @@
 import Card from '../../components/Card/Card';
+import { Skeleton } from "@/components/ui/skeleton"
 import './PublicApis.scss';
+import { useEffect, useState } from 'react';
+import { getCards } from '@/services/apiCards';
 
 interface CardInterface {
   title: string,
@@ -9,58 +12,48 @@ interface CardInterface {
 }
 
 const PublicApis = () => {
-  const cards = [
-    {
-      title: 'MyAnimeList',
-      coverUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/58/MyAnimeList_-_Full_Text_Logo.jpg',
-      description: 'Anime and manga database and community.',
-      badges: [
-        'Anime',
-        'Cors',
-        '0Auth',
-        'Https'
-      ]
-    },
-    {
-      title: 'Faker',
-      coverUrl: 'https://fakerjs.dev/social-image.png',
-      description: 'Generate massive amounts of fake (but realistic) data for testing and development.',
-      badges: [
-        'Test Data',
-        'Https',
-        'No auth',
-        'Cors'
-      ]
-    },
-    {
-      title: 'Remove.bg',
-      coverUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBrEZCgCJXEskIKv7yvryMv9O_C9-jyxx58A&s',
-      description: 'Image background removal.',
-      badges: [
-        'Image',
-        'Api Key',
-        'Https',
-        'Cors'
-      ]
-    },
-    {
-      title: 'Spotify',
-      coverUrl: 'https://www.scdn.co/i/_global/open-graph-default.png',
-      description: 'View Spotify music catalog, manage users&apos;libraries, get recommendations and more.',
-      badges: [
-        'Music',
-        'Cors',
-        '0Auth',
-        'Https'
-      ]
-    },
-  ]
+  const cards = getCards()
   
+  const [isCardLoading, setIsCardLoading] = useState(true);
+
+  useEffect(() => {
+    const imagePromises = cards.map((card) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.src = card.coverUrl;
+        img.onload = () => resolve();
+        img.onerror = () => reject();
+      });
+    });
+
+    Promise.all(imagePromises)
+      .then(() => setIsCardLoading(false)) 
+      .catch(() => setIsCardLoading(false));
+  }, [cards]);
+
+  if (isCardLoading) {
+    return (
+      <section>
+        <div className="cards_container">
+          {Array(4).fill(0).map((_, index) => (
+            <div key={index} className="flex flex-col space-y-3">
+              <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+                <Skeleton className="h-4 w-[200px]" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
   return (
     <section>
       <div className="cards_container">
         {cards.map((card: CardInterface) => <Card card={card}/>)}
       </div>
+      
     </section>
   )
 }
