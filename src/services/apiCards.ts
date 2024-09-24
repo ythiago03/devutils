@@ -40,7 +40,7 @@ export const getCards = () => {
       id: 3,
       title: 'Spotify',
       coverUrl: 'https://www.scdn.co/i/_global/open-graph-default.png',
-      description: 'View Spotify music catalog, manage users&apos;libraries, get recommendations and more.',
+      description: "View Spotify music catalog, manage users'libraries, get recommendations and more.",
       badges: [
         'Music',
         'Cors',

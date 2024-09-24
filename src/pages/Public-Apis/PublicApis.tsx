@@ -34,9 +34,9 @@ const PublicApis = () => {
 
   if (isCardLoading) {
     return (
-      <section>
+      <section data-testid="card-skeleton-loading">
         <div className="cards_container">
-          {Array(4).fill(0).map((_, index) => (
+          {Array(cards.length).fill(0).map((_, index) => (
             <div key={index} className="flex flex-col space-y-3">
               <Skeleton className="h-[125px] w-[250px] rounded-xl" />
               <div className="space-y-2">
@@ -49,12 +49,12 @@ const PublicApis = () => {
       </section>
     );
   }
+
   return (
-    <section>
+    <section data-testid="card-container">
       <div className="cards_container">
         {cards.map((card: CardInterface) => <Card key={card.id} card={card}/>)}
       </div>
-      
     </section>
   )
 }
