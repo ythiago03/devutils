@@ -1,0 +1,38 @@
+@import 'src/styles/main.scss';
+
+.card{
+  @include flex-column;
+  cursor: pointer;
+
+  .card_header{
+    padding: 1rem;
+
+    .card_banner{
+      height: 120px;
+      object-fit: cover;
+      border-radius: .5rem;
+      box-shadow:  0px 0px 5px rgba(7, 7, 7, 0.103);
+    }
+  }
+
+  .card_content{
+    flex-grow: 1;
+  }
+  
+  .card_footer{
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding: 0rem 1rem 1rem 1rem;
+  }
+}
+
+.dark{
+  .home_container{
+    .card_banner{
+      box-shadow:  0px 0px 5px 5px rgba(255, 255, 255, 0.103);
+    }    
+  }
+}
+
