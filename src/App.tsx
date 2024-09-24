@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Person from "./pages/Person/Person";
 import Cpf from "./pages/Cpf/Cpf";
 import PublicApis from "./pages/Public-Apis/PublicApis";
+import Icons from "./pages/Icons/Icons";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route index element={<Person/>}/>
             <Route path="cpf" element={<Cpf/>}/>
             <Route path="public-apis" element={<PublicApis/>}/>
+            <Route path="icons" element={<Icons/>}/>
           </Route>
         </Routes>
       </Router>  

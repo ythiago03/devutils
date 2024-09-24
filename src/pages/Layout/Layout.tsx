@@ -38,10 +38,12 @@ const Layout = () => {
               Public APIs
             </li>
           </NavLink>
-          <li>
-            <span className="material-symbols-outlined">mood</span>
-            Icons
-          </li>
+          <NavLink to='icons' className={({ isActive }) => (isActive ? 'active' : '')}>
+            <li>
+              <span className="material-symbols-outlined">mood</span>
+              Icons
+            </li>
+          </NavLink>
           <li>
             <span className="material-symbols-outlined">image</span>
             Free images
