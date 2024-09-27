@@ -11,9 +11,11 @@ import './Card.scss';
 
 interface CardInterface {
   card:{
-    id: number,
-    title: string,
+    id: string,
+    name: string,
+    siteUrl: string,
     coverUrl: string,
+    type: string,
     description: string
     badges: string[]
   }
@@ -23,8 +25,8 @@ const Card: React.FC<CardInterface> = ({card}) => {
   return (
     <CardShadcn className="card">
       <CardHeader className="card_header">
-        <CardTitle>{card.title}</CardTitle>
-        <img className="card_banner" src={card.coverUrl} alt={`Cover from api ${card.title}`} />
+        <CardTitle>{card.name}</CardTitle>
+        <img className="card_banner" src={card.coverUrl} alt={`Cover from api ${card.name}`} />
       </CardHeader>
       <CardContent className="card_content">
         <CardDescription>{card.description}</CardDescription>
