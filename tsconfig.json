@@ -5,6 +5,9 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "types": ["node", "jest", "@testing-library/jest-dom", "@testing-library/react"],
+    "module": "ESNext",
+    "target": "ES2020",
     "baseUrl": ".",
     "jsx": "react-jsx",
     "paths": {

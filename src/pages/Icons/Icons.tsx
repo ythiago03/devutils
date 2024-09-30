@@ -4,12 +4,14 @@ import './Icons.scss';
 import { useEffect, useState } from 'react';
 import { getIcons } from '@/services/apiIcons';
 
-interface CardInterface {
-  id: number,
-  title: string,
-  coverUrl: string,
-  description: string
-  badges: string[]
+interface ApiCard {
+  id: string;
+  name: string;
+  siteUrl: string;
+  coverUrl: string;
+  type: string;
+  description: string;
+  badges: string[];
 }
 
 const Icons = () => {
@@ -54,7 +56,7 @@ const Icons = () => {
   return (
     <section data-testid="card-container">
       <div className="cards_container">
-        {cards.map((card: CardInterface) => <Card key={card.id} card={card}/>)}
+        {cards.map((card: ApiCard) => <Card key={card.id} card={card}/>)}
       </div>
     </section>
   )

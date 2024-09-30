@@ -12,4 +12,9 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  globals: {
+    'ts-jest': {
+      useESM: true,
+    },
+  },
 };
