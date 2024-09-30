@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import PublicApis from './PublicApis';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs } from 'firebase/firestore';
 
 jest.mock('firebase/firestore', () => ({
   collection: jest.fn(),
@@ -25,7 +25,7 @@ beforeAll(() => {
       VITE_FIREBASE_APP_ID: 'app_id',
       VITE_FIREBASE_MEASUREMENT_ID: 'measurement_id',
     },
-    writable: true,  // Isso permite que você possa modificar `import.meta.env`
+    writable: true,
   });
   
 });
