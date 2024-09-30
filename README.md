@@ -20,6 +20,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias e frameworks:
 - **Jest**: Framework de testes unitários para garantir a funcionalidade e a qualidade do código.
 - **ShadCN**: Design system e biblioteca de componentes para React que segue os princípios de acessibilidade e usabilidade.
 - **Faker**: Biblioteca para gerar dados falsos (mas realistas) para testes e desenvolvimento.
+- **Firebase Firestore**: Firebase Firestore é um banco de dados de documentos NoSQL que permite aos usuários armazenar, sincronizar e consultar dados para seus aplicativos.
 
 ### 1.3 Inspirações
 Este projeto foi inspirado em sites que fornecem ferramentas semelhantes:
