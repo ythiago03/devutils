@@ -63,6 +63,8 @@ const PublicApis = () => {
   if (isCardLoading) {
     return (
       <section data-testid="card-skeleton-loading">
+        <h1 className='title'>A list of cool APIs</h1>
+
         <div className="cards_container">
           {Array(6).fill(0).map((_, index) => (
             <div key={index} className="flex flex-col space-y-3">
@@ -80,6 +82,7 @@ const PublicApis = () => {
 
   return (
     <section data-testid="card-container">
+      <h1 className='title'>A list of cool APIs</h1>
       <div className="cards_container">
         {cards?.map((card) => (
           <Card key={card.id} card={card} />
