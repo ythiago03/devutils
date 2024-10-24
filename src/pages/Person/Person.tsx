@@ -52,6 +52,14 @@ const Person = () => {
   useEffect(() => {
     generateFullPerson()
   }, [])
+
+  const copyToClipboard = (value: string) =>{
+    navigator.clipboard.writeText(value)
+    toast({
+      title: "Text copied to clipboard",
+    })
+  }
+
   return (
     <div className='person_container'>
       <section className='person-data_container'>
@@ -64,7 +72,8 @@ const Person = () => {
               <Tooltip>
                 <TooltipTrigger asChild>
                 <span 
-                  onClick={() => {navigator.clipboard.writeText(person.name)}} className="material-symbols-outlined"
+                  onClick={() => copyToClipboard(person.name)} 
+                  className="material-symbols-outlined"
                 >
                   content_paste
                 </span>
@@ -84,7 +93,7 @@ const Person = () => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span 
-                    onClick={() => {navigator.clipboard.writeText(person.email)}} className="material-symbols-outlined"
+                    onClick={() => copyToClipboard(person.email)} className="material-symbols-outlined"
                   >
                     content_paste
                   </span>
@@ -104,7 +113,7 @@ const Person = () => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span 
-                    onClick={() => {navigator.clipboard.writeText(person.phoneNumber)}} className="material-symbols-outlined"
+                    onClick={() => copyToClipboard(person.phoneNumber)} className="material-symbols-outlined"
                   >
                     content_paste
                   </span>
@@ -125,7 +134,8 @@ const Person = () => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span 
-                    onClick={() => {navigator.clipboard.writeText(person.birthdate.toLocaleDateString())}} className="material-symbols-outlined"
+                    onClick={() => copyToClipboard(person.birthdate.toLocaleDateString())} 
+                    className="material-symbols-outlined"
                   >
                     content_paste
                   </span>
@@ -145,7 +155,7 @@ const Person = () => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span 
-                    onClick={() => {navigator.clipboard.writeText(person.phoneNumber)}} className="material-symbols-outlined"
+                    onClick={() => copyToClipboard(person.phoneNumber)} className="material-symbols-outlined"
                   >
                     content_paste
                   </span>
@@ -171,7 +181,7 @@ const Person = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span 
-                      onClick={() => {navigator.clipboard.writeText(person.address.street)}} className="material-symbols-outlined"
+                      onClick={() => copyToClipboard(person.address.street)} className="material-symbols-outlined"
                     >
                       content_paste
                     </span>
@@ -191,7 +201,7 @@ const Person = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span 
-                      onClick={() => {navigator.clipboard.writeText(person.address.number)}} className="material-symbols-outlined"
+                      onClick={() => copyToClipboard(person.address.number)} className="material-symbols-outlined"
                     >
                       content_paste
                     </span>
@@ -213,7 +223,7 @@ const Person = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span 
-                      onClick={() => {navigator.clipboard.writeText(person.address.city)}} className="material-symbols-outlined"
+                      onClick={() => copyToClipboard(person.address.city)} className="material-symbols-outlined"
                     >
                       content_paste
                     </span>
@@ -233,7 +243,7 @@ const Person = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span 
-                      onClick={() => {navigator.clipboard.writeText(person.address.zipcode)}} className="material-symbols-outlined"
+                      onClick={() => copyToClipboard(person.address.zipcode)} className="material-symbols-outlined"
                     >
                       content_paste
                     </span>
@@ -255,7 +265,7 @@ const Person = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span 
-                      onClick={() => {navigator.clipboard.writeText(person.address.state)}} className="material-symbols-outlined"
+                      onClick={() => copyToClipboard(person.address.state)} className="material-symbols-outlined"
                     >
                       content_paste
                     </span>
@@ -275,7 +285,7 @@ const Person = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span 
-                      onClick={() => {navigator.clipboard.writeText(person.address.country)}} className="material-symbols-outlined"
+                      onClick={() => copyToClipboard(person.address.country)} className="material-symbols-outlined"
                     >
                       content_paste
                     </span>
@@ -292,12 +302,7 @@ const Person = () => {
       <div className='btn_wrapper'>
         <Button onClick={generateFullPerson}>Generate new person</Button>
         <Button 
-          onClick={() => {
-            navigator.clipboard.writeText(JSON.stringify(person))
-            toast({
-              title: "Text copied to clipboard",
-            })
-          }}
+          onClick={() => copyToClipboard(JSON.stringify(person))}
         >
           Copy JSON
         </Button>
