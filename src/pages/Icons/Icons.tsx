@@ -57,27 +57,69 @@ const Icons = () => {
     },
     {
       id: 4,
-      code: ":heavy_check_mark:",
-      unicode: "&#9989;",
-      conventional: "Make a test pass"
+      code: ":rotating_light:",
+      unicode: "&#128680;",
+      conventional: "Tests"
     },
     {
       id: 5,
+      code: ":white_check_mark:",
+      unicode: "&#9989;",
+      conventional: "Adding a test"
+    },
+    {
+      id: 6,
+      code: ":heavy_check_mark:",
+      unicode: "&#10004;",
+      conventional: "Make a test pass"
+    },
+    {
+      id: 7,
       code: ":hammer:",
       unicode: "&#128296;",
       conventional: "Refactor code"
     },
     {
-      id: 6,
+      id: 8,
       code: ":heavy_plus_sign:",
       unicode: "&#10133;",
       conventional: "Adding a dependency"
     },
     {
-      id: 7,
+      id: 9,
       code: ":heavy_minus_sign:",
       unicode: "&#10134;",
       conventional: "Removing a dependency"
+    },
+    {
+      id: 10,
+      code: ":rocket:",
+      unicode: "&#128640;",
+      conventional: "Deploying stuff"
+    },
+    {
+      id: 11,
+      code: ":construction:",
+      unicode: "&#128679;",
+      conventional: "Work in progress"
+    },
+    {
+      id: 12,
+      code: ":whale:",
+      unicode: "&#128051;",
+      conventional: "Docker"
+    },
+    {
+      id: 13,
+      code: ":hankey:",
+      unicode: "&#128169;",
+      conventional: "Bad code / need improv."
+    },
+    {
+      id: 14,
+      code: ":twisted_rightwards_arrows:",
+      unicode: "&#128256;",
+      conventional: "Merging branches"
     },
   ]
 
