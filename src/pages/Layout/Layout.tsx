@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Toaster } from "@/components/ui/toaster"
 import './Layout.scss';
+import { ALargeSmall, FileJson, IdCard, SmilePlus, User, Image } from 'lucide-react';
 
 const Layout = () => {
   return (
@@ -10,14 +11,14 @@ const Layout = () => {
           <h4>Generators</h4>
             <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : '')}>
               <li>
-                <span className="material-symbols-outlined">user_attributes</span>
+                <User />
                 Person
               </li>
             </NavLink>
           
             <NavLink to='cpf' className={({ isActive }) => (isActive ? 'active' : '')}>
               <li>
-                <span className="material-symbols-outlined">id_card</span>
+                <IdCard />
                 Cpf
               </li>
             </NavLink>
@@ -27,7 +28,7 @@ const Layout = () => {
           <h4>Text</h4>
           <NavLink to='text-transform' className={({ isActive }) => (isActive ? 'active' : '')}>
             <li>
-              <span className="material-symbols-outlined">text_fields</span>
+              <ALargeSmall />
               Transform
             </li>
           </NavLink>
@@ -36,18 +37,18 @@ const Layout = () => {
           <h4>Others</h4>
           <NavLink to='public-apis' className={({ isActive }) => (isActive ? 'active' : '')}>
             <li>
-              <span className="material-symbols-outlined">integration_instructions</span>
+              <FileJson />
               Public APIs
             </li>
           </NavLink>
           <NavLink to='icons' className={({ isActive }) => (isActive ? 'active' : '')}>
             <li>
-              <span className="material-symbols-outlined">mood</span>
+              <SmilePlus />
               Icons
             </li>
           </NavLink>
           <li>
-            <span className="material-symbols-outlined">image</span>
+            <Image />
             Free images
           </li>
         </ul>
