@@ -25,10 +25,12 @@ const Layout = () => {
         <span className='divider'></span>
         <ul>
           <h4>Text</h4>
-          <li>
-            <span className="material-symbols-outlined">text_fields</span>
-            Transform
-          </li>
+          <NavLink to='text-transform' className={({ isActive }) => (isActive ? 'active' : '')}>
+            <li>
+              <span className="material-symbols-outlined">text_fields</span>
+              Transform
+            </li>
+          </NavLink>
         </ul>
         <ul>
           <h4>Others</h4>
