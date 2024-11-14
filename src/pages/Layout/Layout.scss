@@ -22,7 +22,6 @@
       li{
         @include flex-align(flex-start, center);
         gap: .5rem;
-        color: gray;
         cursor: pointer;
         padding: 0.2rem;
 

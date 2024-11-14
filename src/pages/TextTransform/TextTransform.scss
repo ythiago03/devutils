@@ -1,0 +1,17 @@
+@import 'src/styles/main.scss';
+
+.text-transform_container{
+  padding: 1.5rem;
+
+  h2{
+    font-weight: 500;
+  }
+  
+  .modifiers, .controls{
+    width: 100%;
+    @include center-content;
+    gap: 1rem;
+    margin: 1rem;
+    margin-bottom: 2rem;
+  }
+}
