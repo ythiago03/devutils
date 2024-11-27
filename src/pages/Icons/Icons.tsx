@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
 
-
 interface ApiCard {
   id: string;
   name: string;
@@ -26,11 +25,18 @@ interface ApiCard {
   badges: string[];
 }
 
+interface Icon {
+  id: number;
+  code: string;
+  unicode: string;
+  conventional: string;
+}
+
 const Icons = () => {
   const [cards, setCards] = useState<ApiCard[] | null>(null);
-  const [isCardLoading, setIsCardLoading] = useState(true);
+  const [isCardLoading, setIsCardLoading] = useState<boolean>(true);
 
-  const icons = [
+  const icons: Icon[] = [
     {
       id: 0,
       code: ":tada:",
@@ -124,12 +130,12 @@ const Icons = () => {
   ]
 
   useEffect(() => {
-    const getPublicIcons = async () => {
+    const getPublicIcons = async (): Promise<void> => {
       try {
         const publicIconsRef = collection(db, "free-icons");
         const data = await getDocs(publicIconsRef);
         
-        const filteredData: ApiCard[] = data.docs.map((doc) => {
+        const filteredData: ApiCard[] = data.docs.map((doc): ApiCard => {
           const docData = doc.data();
           return {
             id: doc.id,
@@ -142,7 +148,7 @@ const Icons = () => {
           };
         });
 
-        const imagePromises = filteredData.map((card) => {
+        const imagePromises = filteredData.map((card): Promise<void> => {
           return new Promise<void>((resolve, reject) => {
             const img = new Image();
             img.src = card.coverUrl;
@@ -180,7 +186,7 @@ const Icons = () => {
         </TableHeader>
         <TableBody>
          {icons.map(icon => 
-          <TableRow>
+          <TableRow key={icon.id}>
             <TableCell className="font-medium" dangerouslySetInnerHTML={{ __html: icon.unicode }}></TableCell>
             <TableCell>{icon.conventional}</TableCell>
             <TableCell>{icon.code}</TableCell>
