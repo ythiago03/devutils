@@ -17,15 +17,15 @@ interface ApiCard {
 
 const PublicApis = () => {
   const [cards, setCards] = useState<ApiCard[] | null>(null);
-  const [isCardLoading, setIsCardLoading] = useState(true);
+  const [isCardLoading, setIsCardLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const getPublicApis = async () => {
+    const getPublicApis = async (): Promise<void> => {
       try {
         const publicApisRef = collection(db, "public-apis");
         const data = await getDocs(publicApisRef);
         
-        const filteredData: ApiCard[] = data.docs.map((doc) => {
+        const filteredData: ApiCard[] = data.docs.map((doc): ApiCard => {
           const docData = doc.data();
           return {
             id: doc.id,
@@ -38,7 +38,7 @@ const PublicApis = () => {
           };
         });
 
-        const imagePromises = filteredData.map((card) => {
+        const imagePromises = filteredData.map((card): Promise<void> => {
           return new Promise<void>((resolve, reject) => {
             const img = new Image();
             img.src = card.coverUrl;

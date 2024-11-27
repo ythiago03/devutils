@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './Layout.scss';
 import { ALargeSmall, FileJson, IdCard, SmilePlus, User, Image } from 'lucide-react';
 
-const Layout = () => {
+const Layout: React.FC = () => {
   return (
     <section className="home_container">
       <nav className="sidebar_container">
