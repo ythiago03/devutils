@@ -1,4 +1,3 @@
-import React from 'react'
 import ThemeToggle from '../Theme/theme-toggle'
 import './Navbar.scss'
 
