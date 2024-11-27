@@ -11,8 +11,24 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import './Person.scss';
 
+interface PersonInterface {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  gender: string;
+  birthdate: Date;
+  address: {
+    street: string;
+    number: string;
+    zipcode: string;
+    country: string;
+    city: string;
+    state: string;
+  }
+}
+
 const Person = () => {
-  const [person, setPerson] = useState({
+  const [person, setPerson] = useState<PersonInterface>({
     name: '',
     email: '',
     phoneNumber: '',
@@ -29,9 +45,9 @@ const Person = () => {
   });
 
   const { toast } = useToast()
-
-  const generateFullPerson = () => {
-    const person = {
+  
+  const generateFullPerson = (): void => {
+    const person: PersonInterface = {
       name: faker.person.fullName(),
       email: faker.internet.email(),
       phoneNumber: faker.phone.number({ style: 'national' }),
@@ -53,7 +69,7 @@ const Person = () => {
     generateFullPerson()
   }, [])
 
-  const copyToClipboard = (value: string) =>{
+  const copyToClipboard = (value: string): void =>{
     navigator.clipboard.writeText(value)
     toast({
       title: "Text copied to clipboard",
