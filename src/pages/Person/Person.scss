@@ -15,22 +15,6 @@
     .input_wrapper{
       display: flex;
     }
-
-    .input_container{
-      @include flex-column;
-      gap: .5rem;
-      flex: 1;
-  
-      div{
-        @include flex-align('',center);
-        padding: 0 0.5rem;
-        gap: .5rem;
-  
-        span{
-          cursor: pointer;
-        }
-      }
-    }
   }
 
   .btn_wrapper{
