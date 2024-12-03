@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import './Card.scss';
+import { Link } from "react-router-dom";
 
 interface CardInterface {
   card:{
@@ -24,16 +25,18 @@ interface CardInterface {
 const Card: React.FC<CardInterface> = ({card}) => {
   return (
     <CardShadcn className="card">
-      <CardHeader className="card_header">
-        <CardTitle>{card.name}</CardTitle>
-        <img className="card_banner" src={card.coverUrl} alt={`Cover from api ${card.name}`} />
-      </CardHeader>
-      <CardContent className="card_content">
-        <CardDescription>{card.description}</CardDescription>
-      </CardContent>
-      <CardFooter className="card_footer">
-        {card.badges.map(badge => <Badge key={badge+card.id}>{badge}</Badge>)}
-      </CardFooter>
+      <Link to={card.siteUrl} target="_blank">
+        <CardHeader className="card_header">
+          <CardTitle>{card.name}</CardTitle>
+          <img className="card_banner" src={card.coverUrl} alt={`Cover from api ${card.name}`} />
+        </CardHeader>
+        <CardContent className="card_content">
+          <CardDescription>{card.description}</CardDescription>
+        </CardContent>
+        <CardFooter className="card_footer">
+          {card.badges.map(badge => <Badge key={badge+card.id}>{badge}</Badge>)}
+        </CardFooter>
+      </Link>
     </CardShadcn>
   )
 }
