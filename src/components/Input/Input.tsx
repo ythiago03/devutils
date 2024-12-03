@@ -14,26 +14,26 @@ const Input: React.FC<InputProps> = ({label, value, copyToClipboard}) => {
   
   return (
     <div className='input_container'>
-    <Label htmlFor={`input-${value}`}>{label}</Label>
-    <div>
-      <InputShadcn data-testid="person-name" disabled type="text" value={value} id={`input-${value}`}/>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-          <span 
-            onClick={copyToClipboard} 
-            className="material-symbols-outlined"
-          >
-            content_paste
-          </span>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Copy to clipboard</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Label htmlFor={`input-${value}`}>{label}</Label>
+      <div>
+        <InputShadcn data-testid="person-name" disabled type="text" value={value} id={`input-${value}`}/>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span 
+                onClick={copyToClipboard} 
+                className="material-symbols-outlined"
+              >
+                content_paste
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Copy to clipboard</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     </div>
-  </div>
   )
 }
 
