@@ -1,10 +1,14 @@
-import { Input } from "@/components/ui/input";
-import "./Password.scss";
-import { Slider } from "@/components/ui/slider";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Copy, RotateCcw } from "lucide-react";
+
 import { toast } from "@/hooks/use-toast";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+
+import { Copy, RotateCcw } from "lucide-react";
+
+import "./Password.scss";
 
 const Password = () => {
 	const [passwordLenght, setPasswordLenght] = useState<number>(16);
@@ -18,7 +22,6 @@ const Password = () => {
 		setPasswordLenght(value);
 
 		const generatedPassword = generatePassword(value);
-
 		setPassword(generatedPassword);
 	};
 
@@ -45,7 +48,6 @@ const Password = () => {
 		if (!containsSpecials) {
 			formatedCharacters = formatedCharacters.replace(/[^a-zA-Z0-9]/g, "");
 		}
-		console.log(formatedCharacters);
 
 		let generatedPassword = "";
 		for (let i = 0; i < length; i++) {
