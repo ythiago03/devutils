@@ -10,6 +10,7 @@ import TextTransform from "./pages/TextTransform/TextTransform";
 
 import { ThemeProvider } from "./components/Theme/theme-provider";
 import Navbar from "./components/Navbar/Navbar";
+import StringToHex from "./pages/StringToHex/StringToHex";
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 						<Route path="text-transform" element={<TextTransform />} />
 						<Route path="public-apis" element={<PublicApis />} />
 						<Route path="icons" element={<Icons />} />
+						<Route path="string-to-hex" element={<StringToHex />} />
 					</Route>
 				</Routes>
 			</Router>

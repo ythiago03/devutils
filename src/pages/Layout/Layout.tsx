@@ -7,7 +7,6 @@ import {
 	FileJson,
 	SmilePlus,
 	User,
-	Image,
 	RectangleEllipsis,
 } from "lucide-react";
 
@@ -51,6 +50,15 @@ const Layout: React.FC = () => {
 							Transform
 						</li>
 					</NavLink>
+					<NavLink
+						to="string-to-hex"
+						className={({ isActive }) => (isActive ? "active" : "")}
+					>
+						<li>
+							<ALargeSmall />
+							String to Hex
+						</li>
+					</NavLink>
 				</ul>
 				<ul>
 					<h4>Others</h4>
@@ -72,10 +80,6 @@ const Layout: React.FC = () => {
 							Icons
 						</li>
 					</NavLink>
-					<li>
-						<Image />
-						Free images
-					</li>
 				</ul>
 			</nav>
 
