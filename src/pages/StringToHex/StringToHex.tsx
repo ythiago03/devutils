@@ -1,31 +1,47 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { toast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 import { ArrowDownUp, Copy, Equal, RotateCcw } from "lucide-react";
 
 import "./StringToHex.scss";
-import { Textarea } from "@/components/ui/textarea";
 
 const StringToHex = () => {
-	const [stringValue, setSetstringValue] = useState<string>("");
+	const [stringValue, setStringValue] = useState<string>("");
 	const [hexValue, setHexValue] = useState<string>("");
 	const [isSwaped, setIsSwaped] = useState<boolean>(false);
 
 	const convertStringToHex = (): void => {
-		console.log("convertendo string");
+		const textEncoder = new TextEncoder();
+		const encodedString = textEncoder.encode(stringValue);
+
+		const hexString = Array.from(encodedString)
+			.map((byte) => byte.toString(16).padStart(2, "0"))
+			.join(" ");
+		setHexValue(hexString);
 	};
 
 	const convertHexToString = (): void => {
-		console.log("convertendo hex");
+		const bytes = hexValue.split(" ").map((byte) => Number.parseInt(byte, 16));
+		const textDecoder = new TextDecoder("utf-8");
+
+		setStringValue(textDecoder.decode(new Uint8Array(bytes)));
+	};
+
+	const resetValues = (): void => {
+		setStringValue("");
+		setHexValue("");
 	};
 
 	const copyToClipboard = (value: string) => {
 		navigator.clipboard.writeText(value);
 		toast({
-			title: "Password copied to clipboard",
+			title: isSwaped
+				? "String copied to clipboard"
+				: "Hex copied to clipboard",
 		});
 	};
 
@@ -44,7 +60,7 @@ const StringToHex = () => {
 				) : (
 					<Textarea
 						value={stringValue}
-						onChange={(e) => setSetstringValue(e.target.value)}
+						onChange={(e) => setStringValue(e.target.value)}
 						className="mt-5 mx-auto min-h-44"
 						placeholder="Text input..."
 					/>
@@ -66,11 +82,7 @@ const StringToHex = () => {
 					<Equal />
 					Convert
 				</Button>
-				<Button
-					className="gap-3"
-					onClick={() => console.log("clicou")}
-					variant={"secondary"}
-				>
+				<Button className="gap-3" onClick={resetValues} variant={"secondary"}>
 					<RotateCcw />
 					Reset
 				</Button>
@@ -88,7 +100,7 @@ const StringToHex = () => {
 				{isSwaped ? (
 					<Textarea
 						value={stringValue}
-						onChange={(e) => setSetstringValue(e.target.value)}
+						onChange={(e) => setStringValue(e.target.value)}
 						className="mt-5 mx-auto min-h-44"
 						placeholder="Text output..."
 					/>
@@ -103,13 +115,12 @@ const StringToHex = () => {
 			</div>
 
 			<div className="controls">
-				<Button onClick={() => copyToClipboard(password)} className="gap-3">
+				<Button
+					onClick={() => copyToClipboard(isSwaped ? stringValue : hexValue)}
+					className="gap-3"
+				>
 					<Copy />
 					Copy
-				</Button>
-				<Button onClick={() => getPassword(passwordLenght)} className="gap-3">
-					<RotateCcw />
-					Reset
 				</Button>
 			</div>
 		</section>
