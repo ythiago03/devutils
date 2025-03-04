@@ -8,6 +8,8 @@ import {
 	SmilePlus,
 	User,
 	RectangleEllipsis,
+	Equal,
+	GitGraph,
 } from "lucide-react";
 
 import "./Layout.scss";
@@ -55,7 +57,7 @@ const Layout: React.FC = () => {
 						className={({ isActive }) => (isActive ? "active" : "")}
 					>
 						<li>
-							<ALargeSmall />
+							<Equal />
 							String to Hex
 						</li>
 					</NavLink>
@@ -78,6 +80,15 @@ const Layout: React.FC = () => {
 						<li>
 							<SmilePlus />
 							Icons
+						</li>
+					</NavLink>
+					<NavLink
+						to="icons"
+						className={({ isActive }) => (isActive ? "active" : "")}
+					>
+						<li>
+							<GitGraph />
+							Commit Icons
 						</li>
 					</NavLink>
 				</ul>
