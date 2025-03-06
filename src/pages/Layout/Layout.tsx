@@ -83,7 +83,7 @@ const Layout: React.FC = () => {
 						</li>
 					</NavLink>
 					<NavLink
-						to="icons"
+						to="commit-icons"
 						className={({ isActive }) => (isActive ? "active" : "")}
 					>
 						<li>
