@@ -52,10 +52,10 @@ const Person: React.FC = () => {
     setPerson(generateFullPerson())
   }
 
-  const copyToClipboard = (value: string): void =>{
+  const copyToClipboard = (value: string, msg?: string): void =>{
     navigator.clipboard.writeText(value)
     toast({
-      title: "Text copied to clipboard",
+      title: msg ||"Text copied to clipboard",
     })
   }
 
@@ -101,7 +101,7 @@ const Person: React.FC = () => {
           <div className='btn_wrapper'>
             <Button onClick={generateNewPerson}>Generate new person</Button>
             <Button 
-              onClick={() => copyToClipboard(JSON.stringify(person))}
+              onClick={() => copyToClipboard(JSON.stringify(person), "JSON copied to clipboard")}
             >
               Copy JSON
             </Button>
@@ -113,3 +113,4 @@ const Person: React.FC = () => {
 }
 
 export default Person
+

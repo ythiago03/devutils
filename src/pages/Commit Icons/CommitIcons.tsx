@@ -1,6 +1,9 @@
+import { useCallback, useEffect, useState } from "react";
+
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "@/config/firebase";
-import { useCallback, useEffect, useState } from "react";
+
+import { useToast } from "@/hooks/use-toast";
 
 import {
 	Table,
@@ -11,8 +14,8 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-
 import "./CommitIcons.scss";
+
 
 interface Icon {
 	id: string;
@@ -23,6 +26,7 @@ interface Icon {
 
 const CommitIcons = () => {
 	const [icons, setIcons] = useState<Icon[] | null>(null);
+	const { toast } = useToast()
 
 	const getCommitIcons = useCallback(async (): Promise<void> => {
 		try {
@@ -44,6 +48,14 @@ const CommitIcons = () => {
 			console.error("An error ocurred while fetching icons:", error);
 		}
 	}, []);
+
+	const copyToClipboard = (code: string): void => {
+		navigator.clipboard.writeText(code);
+		
+		toast({
+      title: "Icon copied to clipboard",
+    })
+	};
 
 	useEffect(() => {
 		getCommitIcons();
@@ -76,9 +88,7 @@ const CommitIcons = () => {
 								<TableCell className="text-center">
 									<button
 										type="button"
-										onClick={() => {
-											navigator.clipboard.writeText(icon.code);
-										}}
+										onClick={() => copyToClipboard(icon.code)}
 										className="material-symbols-outlined"
 									>
 										content_paste

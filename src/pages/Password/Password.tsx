@@ -49,6 +49,13 @@ const Password = () => {
 			formatedCharacters = formatedCharacters.replace(/[^a-zA-Z0-9]/g, "");
 		}
 
+		if (formatedCharacters.length === 0) {
+			toast({
+			title: "Please select at least one character type",
+		});
+			return ""
+		}
+
 		let generatedPassword = "";
 		for (let i = 0; i < length; i++) {
 			const randomIndex = Math.floor(Math.random() * formatedCharacters.length);
@@ -69,7 +76,7 @@ const Password = () => {
 			<h2>Password Generator</h2>
 
 			<div className="password-input_wrapper">
-				<Input className="h-20 text-xl text-center" value={password} />
+				<Input className="h-20 text-xl text-center" disabled value={password} />
 			</div>
 
 			<div className="password-config_wrapper">
